@@ -1,0 +1,20 @@
+:root{--ink:#10202b;--muted:#5a6b76;--line:#e4eaee;--accent:#0f7c66;--accent-dk:#0a5a4a;--soft:#f4f8f7;--gold:#c9a14a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);line-height:1.72}
+a{color:var(--accent-dk)}a:hover{text-decoration:underline}
+.wrap{max-width:740px;margin:0 auto;padding:0 22px}
+.navw{max-width:1080px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:20}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{font-weight:700}.brand span{color:var(--accent)}
+nav ul{list-style:none;display:flex;gap:22px}nav a{color:var(--muted);font-size:.92rem;font-weight:500;text-decoration:none}
+.hero{background:var(--soft);border-bottom:1px solid var(--line);padding:52px 0 40px}
+.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);font-weight:700}
+h1{font-size:2.05rem;line-height:1.2;letter-spacing:-.4px;margin:10px 0}
+.byline{color:var(--muted);font-size:.92rem}
+article{padding:44px 0 30px;font-size:1.06rem}
+article h2{font-size:1.4rem;margin:30px 0 10px;letter-spacing:-.2px}
+article p{margin-bottom:18px}article strong{color:var(--ink)}
+.back{display:inline-block;margin:18px 0 60px;color:var(--accent-dk)}
+footer{background:#0a2129;color:#cfe0da;padding:38px 0;font-size:.9rem}
+footer a{color:#8fe3cf}
