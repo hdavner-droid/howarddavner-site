@@ -1,8 +1,11 @@
 name: Publish
 
-# Fires when an article file is added or changed, on a weekly sweep, and
-# on demand. The bot's own commit touches only insights.html / sitemap.xml,
-# which are outside the paths filter below — so it cannot retrigger itself.
+# Netlify is Git-linked to this repo, so a push to main IS the deploy.
+# This workflow's job is to keep insights.html and sitemap.xml in step with
+# the files in insights/ and press/, then confirm the deploy actually landed.
+#
+# The bot's own commit touches only insights.html / sitemap.xml, which are
+# outside the paths filter below — so it cannot retrigger itself.
 on:
   push:
     branches: [main]
@@ -14,13 +17,10 @@ on:
     # Mondays 13:00 UTC — 9:00 AM Eastern in summer, 8:00 AM in winter.
     # Pinned to UTC deliberately: GitHub cron has no timezone support, so
     # the alternative is an hour of silent drift twice a year.
+    # On a quiet week this run is a drift alarm: it re-checks that every
+    # article in the repo is actually being served.
     - cron: '0 13 * * 1'
   workflow_dispatch:
-    inputs:
-      deploy_anyway:
-        description: 'Trigger a Netlify deploy even if nothing changed'
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -57,32 +57,8 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Deploy to Netlify
-        if: steps.commit.outputs.changed == 'true' || inputs.deploy_anyway
-        env:
-          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
-        run: |
-          if [ -z "$HOOK" ]; then
-            echo "::warning::NETLIFY_BUILD_HOOK is not set — skipping deploy."
-            echo "Add it under Settings > Secrets and variables > Actions,"
-            echo "or link the Netlify site to this repo and delete this step."
-            exit 0
-          fi
-          code=$(curl -sS -X POST -o /dev/null -w '%{http_code}' "$HOOK")
-          echo "Netlify build hook returned HTTP $code"
-          [ "$code" -ge 200 ] && [ "$code" -lt 300 ]
-
+      # Runs every time, changed or not. Asserts the live sitemap covers every
+      # article in the repo and that each URL resolves — not merely that the
+      # domain answers. Fails the run if the site is behind.
       - name: Verify live
-        if: steps.commit.outputs.changed == 'true' || inputs.deploy_anyway
-        run: |
-          echo "Waiting for Netlify to publish..."
-          for i in $(seq 1 20); do
-            sleep 15
-            code=$(curl -s -o /dev/null -w '%{http_code}' https://howarddavner.com/insights.html)
-            echo "attempt $i: HTTP $code"
-            if [ "$code" = "200" ]; then
-              echo "Live: https://howarddavner.com/insights.html"
-              exit 0
-            fi
-          done
-          echo "::warning::Site did not return 200 within 5 minutes — check Netlify."
+        run: python3 scripts/publish.py --verify-live
