@@ -182,6 +182,22 @@ def main():
     if check_only:
         return 1
 
+    # Sanity rail. A normal publish adds one or two articles. A double-digit
+    # batch almost always means the detection pattern stopped matching the
+    # index (e.g. link format changed), which would duplicate the whole grid.
+    # Run 15 of this workflow did exactly that and was only stopped by a
+    # rejected push. Refuse rather than write, unless explicitly forced.
+    LIMIT = 5
+    if len(new_cards) > LIMIT and "--force" not in sys.argv:
+        print(
+            "\nABORT: {} cards is more than the {}-card safety limit.\n"
+            "This usually means href detection is broken, not that {} articles\n"
+            "were genuinely added. Re-run with --force if it is real.".format(
+                len(new_cards), LIMIT, len(new_cards)
+            )
+        )
+        return 3
+
     # Newest first, matching how the grid is currently ordered.
     if new_cards:
         block = "\n".join(c for _, c in sorted(new_cards, reverse=True))
