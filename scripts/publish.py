@@ -7,8 +7,9 @@ rewritten, reordered, or reworded. Hand-tuned copy stays hand-tuned. The
 script only fills in what is missing for files that aren't listed yet.
 
 Usage:
-    python3 scripts/publish.py            # apply changes
-    python3 scripts/publish.py --check    # report only, exit 1 if work pending
+    python3 scripts/publish.py                 # apply changes
+    python3 scripts/publish.py --check         # report only, exit 1 if work pending
+    python3 scripts/publish.py --verify-live   # assert the live site matches the repo
 """
 
 import datetime
@@ -16,6 +17,8 @@ import html
 import pathlib
 import re
 import sys
+import time
+import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 INDEX = ROOT / "insights.html"
@@ -71,7 +74,72 @@ def card_html(meta, section):
     )
 
 
+def fetch(url, timeout=20):
+    req = urllib.request.Request(url, headers={"User-Agent": "publish.py/1.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.status, r.read().decode("utf-8", "replace")
+
+
+def expected_urls():
+    out = []
+    for section in SECTIONS:
+        folder = ROOT / section
+        if folder.is_dir():
+            for path in sorted(folder.glob("*.html")):
+                out.append("{}/{}/{}.html".format(BASE, section, path.stem))
+    return out
+
+
+def verify_live(attempts=20, delay=15):
+    """Poll the live site until its sitemap covers every article in the repo.
+
+    This checks published CONTENT, not just that the domain answers. A 200 on
+    the homepage proves nothing about whether the deploy actually landed.
+    """
+    want = expected_urls()
+    print("expecting {} article URLs in the live sitemap".format(len(want)))
+    missing = list(want)
+    for i in range(1, attempts + 1):
+        try:
+            status, body = fetch(BASE + "/sitemap.xml")
+        except Exception as exc:  # network hiccup shouldn't end the poll
+            print("attempt {}: fetch failed ({})".format(i, exc))
+            time.sleep(delay)
+            continue
+        missing = [u for u in want if u not in body]
+        print("attempt {}: HTTP {}, {} missing".format(i, status, len(missing)))
+        if not missing:
+            break
+        time.sleep(delay)
+
+    if missing:
+        print("\nLIVE SITE IS BEHIND. Not served yet:")
+        for u in missing[:10]:
+            print("  " + u)
+        return 1
+
+    # Sitemap parity reached - now confirm the pages themselves resolve.
+    bad = []
+    for url in want:
+        try:
+            status, _ = fetch(url)
+            if status != 200:
+                bad.append("{} -> HTTP {}".format(url, status))
+        except Exception as exc:
+            bad.append("{} -> {}".format(url, exc))
+    if bad:
+        print("\nSITEMAP LISTS URLS THAT DO NOT RESOLVE:")
+        for b in bad:
+            print("  " + b)
+        return 1
+
+    print("\nlive site matches the repo - {} articles reachable".format(len(want)))
+    return 0
+
+
 def main():
+    if "--verify-live" in sys.argv:
+        return verify_live()
     check_only = "--check" in sys.argv
     index_src = read(INDEX)
     sitemap_src = read(SITEMAP)
