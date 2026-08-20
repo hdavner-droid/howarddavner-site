@@ -62,7 +62,7 @@ def article_meta(path):
 def card_html(meta, section):
     """One grid card, matching the existing markup byte for byte in shape."""
     return (
-        "    <a class='post' href='/{sec}/{slug}'><div class=\"body\">"
+        "    <a class='post' href='/{sec}/{slug}.html'><div class=\"body\">"
         '<span class="tag">{tag}</span><h3>{title}</h3><p>{desc}</p>'
         "</div></a>".format(
             sec=section,
@@ -162,7 +162,7 @@ def main():
                 notes.append("sitemap  + {}/{}".format(section, meta["slug"]))
 
             if section == CARDED:
-                href = "/{}/{}".format(section, meta["slug"])
+                href = "/{}/{}.html".format(section, meta["slug"])
                 if "href='{}'".format(href) not in index_src:
                     if not meta["title"] or not meta["desc"]:
                         notes.append(
