@@ -1,7 +1,8 @@
 name: Weekly article publish
 
-# Runs entirely on GitHub's servers — no Claude session, no connectors, no computer.
-# Publishes the next queued article, which pushes to main and triggers Netlify auto-deploy.
+# Runs entirely on GitHub's servers - no Claude session, no connectors, no computer.
+# Publishes the next queued article, which pushes to main and triggers Netlify auto-deploy,
+# then submits the new URL to IndexNow so it gets crawled quickly.
 
 on:
   schedule:
@@ -32,5 +33,13 @@ jobs:
             git commit -m "Auto-publish weekly article"
             git push
           else
-            echo "Queue empty — nothing to publish this week."
+            echo "Queue empty - nothing to publish this week."
           fi
+
+      - name: Wait for Netlify to deploy
+        if: env.PUBLISHED_URL != ''
+        run: sleep 90
+
+      - name: Submit new URL to IndexNow
+        if: env.PUBLISHED_URL != ''
+        run: node scripts/ping-indexnow.js

@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
- * Weekly article publisher — runs in GitHub Actions. Zero dependencies, no API keys.
+ * Weekly article publisher - runs in GitHub Actions. Zero dependencies, no API keys.
  *
  * Takes the next article listed in _queue/manifest.json and wires it into the live site:
  *   1. Renders _queue/<file> -> insights/<slug>.html   (fills {{DATE}} and {{MONTH_YEAR}})
  *   2. Inserts the index card into insights.html after <div class="posts">
  *   3. Inserts the sitemap entry before </urlset>
  *   4. Removes the item from the queue and deletes the source file
+ *   5. Exports PUBLISHED_SLUG / PUBLISHED_URL for later workflow steps (IndexNow, syndication)
  *
  * The workflow then commits + pushes, and Netlify auto-deploys. If the queue is empty
  * it exits cleanly and changes nothing.
@@ -22,14 +23,14 @@ const date = new Date().toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
 const monthYear = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 if (!fs.existsSync(MANIFEST)) {
-  console.log('No _queue/manifest.json — nothing to publish.');
+  console.log('No _queue/manifest.json - nothing to publish.');
   process.exit(0);
 }
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
 const queue = Array.isArray(manifest.queue) ? manifest.queue : [];
 if (queue.length === 0) {
-  console.log('QUEUE EMPTY — refill _queue/manifest.json with more articles.');
+  console.log('QUEUE EMPTY - refill _queue/manifest.json with more articles.');
   process.exit(0);
 }
 
@@ -48,7 +49,7 @@ const article = fs.readFileSync(srcPath, 'utf8')
 fs.mkdirSync(path.join(ROOT, 'insights'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'insights', item.slug + '.html'), article);
 
-// 2. insights.html — insert card after <div class="posts"> (idempotent).
+// 2. insights.html - insert card after <div class="posts"> (idempotent).
 const insightsPath = path.join(ROOT, 'insights.html');
 let insights = fs.readFileSync(insightsPath, 'utf8');
 if (insights.includes(`/insights/${item.slug}"`)) {
@@ -59,7 +60,7 @@ if (insights.includes(`/insights/${item.slug}"`)) {
   fs.writeFileSync(insightsPath, insights);
 }
 
-// 3. sitemap.xml — insert before </urlset> (idempotent).
+// 3. sitemap.xml - insert before </urlset> (idempotent).
 const sitemapPath = path.join(ROOT, 'sitemap.xml');
 let sitemap = fs.readFileSync(sitemapPath, 'utf8');
 if (!sitemap.includes(`/insights/${item.slug}.html`)) {
@@ -72,5 +73,11 @@ if (!sitemap.includes(`/insights/${item.slug}.html`)) {
 fs.unlinkSync(srcPath);
 manifest.queue = queue.slice(1);
 fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
+
+// 5. Hand the published slug/URL to the following workflow steps.
+const publishedUrl = `https://howarddavner.com/insights/${item.slug}.html`;
+if (process.env.GITHUB_ENV) {
+  fs.appendFileSync(process.env.GITHUB_ENV, `PUBLISHED_SLUG=${item.slug}\nPUBLISHED_URL=${publishedUrl}\n`);
+}
 
 console.log(`Published "${item.title}" (${item.slug}) on ${date}. ${manifest.queue.length} article(s) left in queue.`);
