@@ -1,0 +1,47 @@
+{
+  "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
+  "queue": [
+    {
+      "file": "the-apprenticeship-gap.html",
+      "slug": "the-apprenticeship-gap",
+      "title": "The Apprenticeship Gap",
+      "tag": "Careers",
+      "description": "AI is absorbing the entry-level work that once taught people judgment. If we let the bottom rung disappear, we lose the way the next generation of talent actually learns."
+    },
+    {
+      "file": "the-reference-check-is-broken.html",
+      "slug": "the-reference-check-is-broken",
+      "title": "The Reference Check Is Broken",
+      "tag": "Careers",
+      "description": "The standard reference call has become theater — a scripted exchange nobody learns anything from. Here is what I ask instead, and why it works."
+    },
+    {
+      "file": "the-first-ninety-days.html",
+      "slug": "the-first-ninety-days",
+      "title": "The First Ninety Days Are a Promise",
+      "tag": "Careers",
+      "description": "Most onboarding treats the first three months as paperwork and patience. I treat them as the most honest promise a company ever makes to a new hire."
+    },
+    {
+      "file": "the-headcount-trap.html",
+      "slug": "the-headcount-trap",
+      "title": "The Headcount Trap",
+      "tag": "Leadership",
+      "description": "When something is not working, the reflex is to add people. More often than not, headcount buries the problem instead of solving it."
+    },
+    {
+      "file": "the-second-sip-problem.html",
+      "slug": "the-second-sip-problem",
+      "title": "The Second Sip Problem",
+      "tag": "Product",
+      "description": "A functional drink can win the first sip on novelty. The second sip is where the real business is won or lost — and most brands never think about it."
+    },
+    {
+      "file": "the-reorder-is-everything.html",
+      "slug": "the-reorder-is-everything",
+      "title": "The Reorder Is Everything",
+      "tag": "Retail",
+      "description": "Getting onto the shelf feels like the win. In beverage, the shelf is rented, and the only rent that counts is velocity. The reorder is the whole game."
+    }
+  ]
+}
