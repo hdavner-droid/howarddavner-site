@@ -8,6 +8,10 @@
  * The Dev.to copy carries rel=canonical back to howarddavner.com, so Google credits
  * the original and the Dev.to URL becomes a second owned, indexable result.
  *
+ * NOTE: Postiz's content schema accepts only h1, h2, h3, u, strong, li, ul and p.
+ * Anchor tags are rejected and the post lands in ERROR state, so all <a> tags are
+ * unwrapped to plain text before sending.
+ *
  * Reads PUBLISHED_SLUG / PUBLISHED_URL from the environment (set by publish-next.js).
  * Never fails the build - syndication is a bonus, not a publish blocker.
  */
@@ -68,8 +72,13 @@ if (blocks.length === 0) {
   process.exit(0);
 }
 
-const body = blocks.join('') +
-  `<p><em>This piece first appeared on <a href="${url}">howarddavner.com</a>.</em></p>`;
+// Postiz rejects anchors. Unwrap them, keeping the link text.
+function stripAnchors(s) {
+  return s.replace(/<a\b[^>]*>([\s\S]*?)<\/a>/gi, '$1');
+}
+
+const body = stripAnchors(blocks.join('')) +
+  `<p><em>This piece first appeared on howarddavner.com</em></p>`.replace(/<\/?em>/g, '');
 
 const payload = {
   type: 'now',
