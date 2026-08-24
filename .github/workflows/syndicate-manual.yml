@@ -1,0 +1,27 @@
+name: Syndicate one article to Dev.to
+
+# Manual only. Pushes any already-published article to Dev.to with a canonical
+# link back to the site. Useful for testing, and for back-filling older articles.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Article slug, e.g. the-apprenticeship-gap'
+        required: true
+        type: string
+
+jobs:
+  syndicate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syndicate to Dev.to
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+          PUBLISHED_SLUG: ${{ inputs.slug }}
+          PUBLISHED_URL: https://howarddavner.com/insights/${{ inputs.slug }}.html
+        run: node scripts/syndicate-devto.js

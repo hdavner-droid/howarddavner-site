@@ -2,8 +2,9 @@ name: Weekly article publish
 
 # Runs entirely on GitHub's servers - no Claude session, no connectors, no computer.
 # 1. Publishes the next queued article (pushes to main -> Netlify auto-deploys)
-# 2. Submits the new URL to IndexNow so it gets crawled quickly
-# 3. Syndicates the article to Dev.to via Postiz, canonical pointing back to the site
+# 2. Tops the queue back up by writing new articles, so it never runs dry
+# 3. Submits the new URL to IndexNow so it gets crawled quickly
+# 4. Syndicates the article to Dev.to via Postiz, canonical pointing back to the site
 
 on:
   schedule:
@@ -24,6 +25,13 @@ jobs:
 
       - name: Publish next queued article
         run: node scripts/publish-next.js
+
+      - name: Top the queue back up
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TARGET_QUEUE: '4'
+          MAX_PER_RUN: '2'
+        run: node scripts/write-next-article.js
 
       - name: Commit & push if changed
         run: |
