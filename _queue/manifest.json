@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-apprenticeship-gap.html",
-      "slug": "the-apprenticeship-gap",
-      "title": "The Apprenticeship Gap",
-      "tag": "Careers",
-      "description": "AI is absorbing the entry-level work that once taught people judgment. If we let the bottom rung disappear, we lose the way the next generation of talent actually learns."
-    },
-    {
       "file": "the-reference-check-is-broken.html",
       "slug": "the-reference-check-is-broken",
       "title": "The Reference Check Is Broken",
