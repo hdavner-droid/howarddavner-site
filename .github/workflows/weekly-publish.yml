@@ -1,8 +1,9 @@
 name: Weekly article publish
 
 # Runs entirely on GitHub's servers - no Claude session, no connectors, no computer.
-# Publishes the next queued article, which pushes to main and triggers Netlify auto-deploy,
-# then submits the new URL to IndexNow so it gets crawled quickly.
+# 1. Publishes the next queued article (pushes to main -> Netlify auto-deploys)
+# 2. Submits the new URL to IndexNow so it gets crawled quickly
+# 3. Syndicates the article to Dev.to via Postiz, canonical pointing back to the site
 
 on:
   schedule:
@@ -43,3 +44,9 @@ jobs:
       - name: Submit new URL to IndexNow
         if: env.PUBLISHED_URL != ''
         run: node scripts/ping-indexnow.js
+
+      - name: Syndicate to Dev.to
+        if: env.PUBLISHED_URL != ''
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: node scripts/syndicate-devto.js
