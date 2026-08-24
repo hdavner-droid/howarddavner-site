@@ -1,0 +1,64 @@
+{
+  "note": "One item posts per daily run (13:00 UTC) via scripts/post-next-social.js. The publisher takes queue[0], posts it through the Postiz API, then removes it. startDate holds the whole queue until posts already scheduled inside Postiz have run out. Refill queue[] to keep the daily cadence going.",
+  "startDate": "2026-09-09",
+  "integrationId": "cms3bzwdi02pao40yvq260ath",
+  "platform": "linkedin",
+  "queue": [
+    {
+      "label": "wall-street-to-beverage",
+      "content": "<p>People assume moving from finance into beverage was a departure. It wasn't. Both businesses come down to whether you understand where the cash actually is.</p><p>What changed was the feedback loop. In finance a bad call shows up in a number. In beverage it shows up as product sitting on a shelf, in public, in front of the buyer.</p><p>That's a harder mirror, and a better teacher.</p><p>https://howarddavner.com/insights/wall-street-to-beverage.html</p>"
+    },
+    {
+      "label": "the-focus-economy",
+      "content": "<p>Attention has become the scarce input in almost every kind of work, which is why so much of the economy is quietly reorganizing around protecting it.</p><p>We built NERD Focus for one specific moment: the hour before hard, concentrated work. Not energy in general. That hour.</p><p>Owning an occasion beats chasing a demographic, every time.</p><p>https://howarddavner.com/insights/the-focus-economy.html</p>"
+    },
+    {
+      "label": "creating-a-category",
+      "content": "<p>Everyone wants to create a category. Almost nobody wants the part where you spend two years explaining what your product even is.</p><p>Category creation is mostly education expense, paid up front, with your competitors eventually free-riding on it.</p><p>Worth doing - but go in knowing you're buying the market's understanding, not just its attention.</p><p>https://howarddavner.com/insights/creating-a-category.html</p>"
+    },
+    {
+      "label": "protect-the-downside",
+      "content": "<p>The habit that has served me best across two very different industries: decide what the worst realistic outcome is, make sure you survive it, and only then get interested in the upside.</p><p>It sounds unambitious. It's the opposite. Surviving your bad years is what lets you still be in the room for the good ones.</p><p>https://howarddavner.com/insights/protect-the-downside.html</p>"
+    },
+    {
+      "label": "culture-of-ownership",
+      "content": "<p>You can't ask people to act like owners while reserving every real decision for yourself. They notice.</p><p>Ownership isn't a value you post on a wall. It's a series of moments where someone made a call you would have made differently, and you let it stand.</p><p>Most cultures die in those moments.</p><p>https://howarddavner.com/insights/culture-of-ownership.html</p>"
+    },
+    {
+      "label": "beverage-distribution",
+      "content": "<p>New beverage founders think the hard part is getting a distributor. The hard part starts after.</p><p>A distributor gives you access, not effort. Your brand is one of hundreds in their book, and attention follows velocity - which you have to create yourself, store by store.</p><p>Signing the agreement is the beginning of the work, not the end of it.</p><p>https://howarddavner.com/insights/beverage-distribution.html</p>"
+    },
+    {
+      "label": "hiring-in-the-age-of-ai-provieo",
+      "content": "<p>AI didn't break hiring by making candidates worse. It broke hiring by making every application look equally good.</p><p>When the signal disappears from the document, employers fall back on networks and pedigree - which is a worse world, not a better one.</p><p>The way out is evidence: real work, with the reasoning visible.</p><p>https://howarddavner.com/insights/hiring-in-the-age-of-ai-provieo.html</p>"
+    },
+    {
+      "label": "the-long-game-patience",
+      "content": "<p>Most of what compounds in a business is invisible for years. Reputation, bench strength, the habit of doing the unglamorous thing properly.</p><p>None of it shows up in a quarter. All of it shows up in a decade.</p><p>The hardest discipline in operating isn't working harder. It's being willing to wait for the return.</p><p>https://howarddavner.com/insights/the-long-game-patience.html</p>"
+    },
+    {
+      "label": "engineering-the-energy-curve",
+      "content": "<p>Most energy products are engineered for the first twenty minutes. That's why the crash is the category's defining experience.</p><p>The interesting problem isn't peak intensity - it's the shape of the curve. Onset, plateau, and how gracefully it comes down.</p><p>Formulate for how someone feels at hour three, not at minute five.</p><p>https://howarddavner.com/insights/engineering-the-energy-curve.html</p>"
+    },
+    {
+      "label": "finance-discipline-startups",
+      "content": "<p>Financial discipline in a young company isn't about spending less. It's about knowing, at any moment, which number would actually kill you.</p><p>Most founders can recite revenue. Fewer can tell you their true landed cost, and fewer still can tell you when the cash runs out under a realistic case.</p><p>Know the one that kills you.</p><p>https://howarddavner.com/insights/finance-discipline-startups.html</p>"
+    },
+    {
+      "label": "provieo-both-sides-of-the-hire",
+      "content": "<p>I've spent years on the employer side of hiring, and I built Provieo from the candidate side. The strange part is how similar the complaint is.</p><p>Employers say they can't tell who can actually do the work. Candidates say they can't show it. Same broken channel, two directions.</p><p>Fix the channel and both problems get smaller.</p><p>https://howarddavner.com/insights/provieo-both-sides-of-the-hire.html</p>"
+    },
+    {
+      "label": "functional-beverage-market",
+      "content": "<p>The functional beverage market keeps getting described as crowded. It isn't crowded - it's undifferentiated, which is a different problem with a different fix.</p><p>Dozens of brands are chasing the same broad wellness consumer with the same hero ingredients at the same underdosed levels.</p><p>There's enormous room for anyone willing to own one occasion and actually deliver on it.</p><p>https://howarddavner.com/insights/functional-beverage-market.html</p>"
+    },
+    {
+      "label": "learning-by-building-provieo-method",
+      "content": "<p>You don't learn judgment from a course. You learn it from making a decision, living with the result, and having to explain it to someone.</p><p>That's the loop AI is quietly removing from early-career work, and it's the loop we designed Provieo around rebuilding.</p><p>Build something real, then defend the choices. That's the whole method.</p><p>https://howarddavner.com/insights/learning-by-building-provieo-method.html</p>"
+    },
+    {
+      "label": "introducing-provieo",
+      "content": "<p>I started Provieo because of a pattern I kept seeing from the hiring side: capable people who couldn't prove it, screened out by a document that measures the wrong thing.</p><p>The premise is simple. Stop claiming skills. Show the work, and show the thinking behind it.</p><p>https://howarddavner.com/insights/introducing-provieo.html</p>"
+    }
+  ]
+}

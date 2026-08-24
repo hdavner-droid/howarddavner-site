@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /_queue/
+Disallow: /_social-queue/
 Disallow: /scripts/
 
 Sitemap: https://howarddavner.com/sitemap.xml
