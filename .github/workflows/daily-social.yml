@@ -1,13 +1,19 @@
 name: Daily social post
 
-# Runs on GitHub's servers every day. Posts the next queued item to Postiz,
-# which pushes it straight to the connected channel. No Claude session,
-# no computer, no Postiz scheduler needed.
+# PAUSED 2026-08-24. Do not re-enable until Postiz delivery is verified ON LinkedIn itself.
+#
+# Why: Postiz marked a test post PUBLISHED (post id cmt78py3i00hwpf0yngf6iuad, 12:56 UTC)
+# and it never appeared on linkedin.com/in/howarddavner. The 08-21 and 08-23 scheduled
+# posts failed the same silent way. Separately, a linkedin-page post sat in QUEUE past
+# its 13:00 UTC slot. Postiz returns 2xx and reports success, so this workflow would
+# report green every day while publishing nothing - worse than not running at all.
+#
+# To re-enable: verify a post actually appears on LinkedIn, then uncomment the schedule.
 
 on:
-  schedule:
-    - cron: '0 13 * * *'   # daily 13:00 UTC (9am ET)
-  workflow_dispatch: {}     # manual run from the Actions tab
+  # schedule:
+  #   - cron: '0 13 * * *'   # daily 13:00 UTC (9am ET) - PAUSED, see above
+  workflow_dispatch: {}
 
 permissions:
   contents: write
