@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-reference-check-is-broken.html",
-      "slug": "the-reference-check-is-broken",
-      "title": "The Reference Check Is Broken",
-      "tag": "Careers",
-      "description": "The standard reference call has become theater — a scripted exchange nobody learns anything from. Here is what I ask instead, and why it works."
-    },
-    {
       "file": "the-first-ninety-days.html",
       "slug": "the-first-ninety-days",
       "title": "The First Ninety Days Are a Promise",
