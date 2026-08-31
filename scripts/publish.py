@@ -162,8 +162,15 @@ def main():
                 notes.append("sitemap  + {}/{}".format(section, meta["slug"]))
 
             if section == CARDED:
-                href = "/{}/{}.html".format(section, meta["slug"])
-                if "href='{}'".format(href) not in index_src:
+                # Match the card in EITHER historical format: single/double quotes,
+                # with or without .html, so we never insert a duplicate.
+                carded = re.search(
+                    r"href=[\"']/{}/{}(\.html)?[\"']".format(
+                        re.escape(section), re.escape(meta["slug"])
+                    ),
+                    index_src,
+                )
+                if not carded:
                     if not meta["title"] or not meta["desc"]:
                         notes.append(
                             "SKIPPED  ! {}/{} — missing <h1> or meta description".format(

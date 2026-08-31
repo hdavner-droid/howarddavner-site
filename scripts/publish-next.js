@@ -52,10 +52,13 @@ fs.writeFileSync(path.join(ROOT, 'insights', item.slug + '.html'), article);
 // 2. insights.html - insert card after <div class="posts"> (idempotent).
 const insightsPath = path.join(ROOT, 'insights.html');
 let insights = fs.readFileSync(insightsPath, 'utf8');
-if (insights.includes(`/insights/${item.slug}"`)) {
+const slugRe = item.slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// Match the card in EITHER historical format: single/double quotes, with or without .html.
+if (new RegExp(`href=["']/insights/${slugRe}(\\.html)?["']`).test(insights)) {
   console.log('Card already present; skipping insights.html.');
 } else {
-  const card = `<a class="post" href="/insights/${item.slug}"><div class="body"><span class="tag">${item.tag}</span><h3>${item.title}</h3><p>${item.description}</p></div></a>`;
+  // Emit the canonical .html href in the same shape publish.py uses, so the two publishers agree.
+  const card = `    <a class='post' href='/insights/${item.slug}.html'><div class="body"><span class="tag">${item.tag}</span><h3>${item.title}</h3><p>${item.description}</p></div></a>`;
   insights = insights.replace(/(<div class="posts">)/, `$1\n${card}`);
   fs.writeFileSync(insightsPath, insights);
 }
