@@ -69,7 +69,7 @@ function template({ title, description, slug, tag, role, bodyHtml }) {
 <meta property="og:title" content="${title}">
 <meta property="article:author" content="Howard Davner">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","headline":"${title}","author":{"@type":"Person","name":"Howard Davner","url":"https://howarddavner.com/"},"datePublished":"{{DATE}}","dateModified":"{{DATE}}","mainEntityOfPage":"https://howarddavner.com/insights/${slug}.html","description":"${description}","publisher":{"@type":"Person","name":"Howard Davner"}}
+{"@context":"https://schema.org","@type":"Article","headline":"${title}","author":{"@id":"https://www.wikidata.org/entity/Q141183598","@type":"Person","name":"Howard Davner","url":"https://howarddavner.com/"},"datePublished":"{{DATE}}","dateModified":"{{DATE}}","mainEntityOfPage":"https://howarddavner.com/insights/${slug}.html","description":"${description}","publisher":{"@id":"https://www.wikidata.org/entity/Q141183598","@type":"Person","name":"Howard Davner"}}
 </script>
 <link rel="stylesheet" href="../style.css">
 </head>
