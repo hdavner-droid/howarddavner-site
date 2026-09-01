@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-first-ninety-days.html",
-      "slug": "the-first-ninety-days",
-      "title": "The First Ninety Days Are a Promise",
-      "tag": "Careers",
-      "description": "Most onboarding treats the first three months as paperwork and patience. I treat them as the most honest promise a company ever makes to a new hire."
-    },
-    {
       "file": "the-headcount-trap.html",
       "slug": "the-headcount-trap",
       "title": "The Headcount Trap",
@@ -28,6 +21,13 @@
       "title": "The Reorder Is Everything",
       "tag": "Retail",
       "description": "Getting onto the shelf feels like the win. In beverage, the shelf is rented, and the only rent that counts is velocity. The reorder is the whole game."
+    },
+    {
+      "file": "the-last-two-weeks.html",
+      "slug": "the-last-two-weeks",
+      "title": "The Last Two Weeks",
+      "tag": "Careers",
+      "description": "How someone behaves during their notice period is one of the most honest signals in hiring, and almost nobody asks about it."
     }
   ]
 }
