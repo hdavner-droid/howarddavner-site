@@ -1,0 +1,56 @@
+name: Daily LinkedIn post (direct API)
+
+# Replaces daily-social.yml, which posted through Postiz.
+#
+# Postiz never successfully delivered a LinkedIn post on this account. It
+# reported PUBLISHED every time (their open issue #989) while the profile
+# stayed empty - confirmed by inspection on 2026-09-04. This workflow talks to
+# LinkedIn directly and only advances the queue when LinkedIn returns the URN
+# of the created post, so a failure can never look like a success.
+#
+# Setup (one time):
+#   1. developer.linkedin.com -> create an app, add the products
+#      "Share on LinkedIn" and "Sign In with LinkedIn using OpenID Connect".
+#   2. Generate a member access token with scopes: openid, profile, w_member_social.
+#   3. Repo Settings -> Secrets and variables -> Actions -> New repository secret
+#      named LINKEDIN_ACCESS_TOKEN.
+#
+# Until that secret exists the job runs, logs a hold, posts nothing and touches
+# nothing. The handoff is automatic - no switch to flip afterwards.
+#
+# Tokens expire after ~60 days. Expiry shows up as a red run with a 401, not
+# as silence. Re-generate and update the secret when that happens.
+
+on:
+  schedule:
+    - cron: '0 13 * * *'   # daily 13:00 UTC / 9am ET
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Post next queued item to LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: node scripts/post-next-linkedin.js
+
+      - name: Commit & push if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "howard-site-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Daily LinkedIn post published"
+            git push
+          else
+            echo "Nothing to commit."
+          fi
