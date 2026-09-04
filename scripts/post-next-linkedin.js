@@ -8,8 +8,8 @@
  * Background: Postiz marked posts PUBLISHED that never reached LinkedIn
  * (their open issue #989, plus a deprecated LinkedIn API version in #1187
  * closed as not-planned). Verified twice on this account in August 2026 and
- * confirmed again 2026-09-04 by inspecting the profile: nothing had posted
- * since a single manual post. A publisher that cannot tell you it failed is
+ * confirmed again 2026-09-04 by inspecting the profile: exactly one post
+ * existed, posted by hand. A publisher that cannot tell you it failed is
  * worse than no publisher, so this script is built the opposite way round:
  * it only advances the queue on a response LinkedIn itself confirms.
  *
@@ -19,8 +19,10 @@
  *                            author URN). Tokens last ~60 days; expiry surfaces
  *                            here as a loud 401, never as a silent no-op.
  *
+ * Set DRY_RUN=true to verify the token without publishing anything.
+ *
  * Exit codes:
- *   0  posted, or intentionally held (no token yet / queue empty / before startDate)
+ *   0  posted, or intentionally held (no token yet / queue empty / dry run)
  *   1  a real failure - queue is NOT advanced, so the item retries tomorrow
  */
 
@@ -57,28 +59,9 @@ async function main() {
     return;
   }
 
-  if (!fs.existsSync(MANIFEST)) fail(`manifest not found at ${MANIFEST}`);
-  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-
-  if (manifest.startDate) {
-    const today = new Date().toISOString().slice(0, 10);
-    if (today < manifest.startDate) {
-      log(`Holding until startDate ${manifest.startDate} (today is ${today}).`);
-      return;
-    }
-  }
-
-  const queue = Array.isArray(manifest.queue) ? manifest.queue : [];
-  if (queue.length === 0) {
-    log('Queue is empty. Nothing to post. Refill _social-queue/manifest.json.');
-    return;
-  }
-
-  const item = queue[0];
-  const commentary = htmlToText(item.content || '');
-  if (!commentary) fail(`queue item "${item.label}" produced empty text`);
-
-  // 1. Resolve the author URN. Also doubles as a token health check.
+  // 1. Resolve the author URN. Also doubles as a token health check, so this
+  //    runs before any queue logic - a smoke test should test the credential
+  //    even when the queue is empty.
   const meRes = await fetch('https://api.linkedin.com/v2/userinfo', {
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -91,13 +74,26 @@ async function main() {
   const me = await meRes.json();
   if (!me.sub) fail('/v2/userinfo returned no "sub" - cannot build the author URN.');
   const author = `urn:li:person:${me.sub}`;
-  log(`Authenticated as ${me.name || me.sub}.`);
+  log(`Token OK. Authenticated as ${me.name || me.sub}.`);
 
-  // Smoke-test mode: prove the token works without spending a queue item.
+  if (!fs.existsSync(MANIFEST)) fail(`manifest not found at ${MANIFEST}`);
+  const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
+
+  const queue = Array.isArray(manifest.queue) ? manifest.queue : [];
+  if (queue.length === 0) {
+    log('Queue is empty. Nothing to post. Refill _social-queue/manifest.json.');
+    return;
+  }
+
+  const item = queue[0];
+  const commentary = htmlToText(item.content || '');
+  if (!commentary) fail(`queue item "${item.label}" produced empty text`);
+
   if (process.env.DRY_RUN === 'true') {
-    log('DRY_RUN - token is valid and the author URN resolved. Nothing posted.');
+    log('DRY_RUN - credentials verified, nothing posted, queue untouched.');
     log(`Author URN: ${author}`);
     log(`Next in queue: "${item.label}" (${commentary.length} chars)`);
+    log(`Queue depth: ${queue.length}`);
     return;
   }
 
