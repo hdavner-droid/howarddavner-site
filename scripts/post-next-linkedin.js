@@ -13,13 +13,23 @@
  * worse than no publisher, so this script is built the opposite way round:
  * it only advances the queue on a response LinkedIn itself confirms.
  *
+ * Two failure modes are handled structurally rather than by hope:
+ *   1. Silent success - impossible here. A post counts only when LinkedIn
+ *      returns the x-restli-id URN of the row it created.
+ *   2. Version rot - LinkedIn retires dated API versions continuously, and a
+ *      pinned version eventually returns 426 NONEXISTENT_VERSION forever.
+ *      That is what killed Postiz. So the version is negotiated from the
+ *      current date at run time, not hardcoded.
+ *
  * Required repo secret:
  *   LINKEDIN_ACCESS_TOKEN  - member token with the w_member_social scope
  *                            (and openid/profile so /v2/userinfo resolves the
  *                            author URN). Tokens last ~60 days; expiry surfaces
  *                            here as a loud 401, never as a silent no-op.
  *
- * Set DRY_RUN=true to verify the token without publishing anything.
+ * Optional env:
+ *   DRY_RUN=true          - verify the token, publish nothing
+ *   LINKEDIN_VERSION      - pin one version (e.g. 202608) instead of negotiating
  *
  * Exit codes:
  *   0  posted, or intentionally held (no token yet / queue empty / dry run)
@@ -30,10 +40,27 @@ const fs = require('fs');
 const path = require('path');
 
 const MANIFEST = path.join(__dirname, '..', '_social-queue', 'manifest.json');
-const LINKEDIN_VERSION = '202506';
+const POSTS_URL = 'https://api.linkedin.com/rest/posts';
+const VERSION_LOOKBACK_MONTHS = 18;
 
 function log(msg) { console.log(`[linkedin] ${msg}`); }
 function fail(msg) { console.error(`[linkedin] FAILED: ${msg}`); process.exit(1); }
+
+/**
+ * LinkedIn versions are YYYYMM strings, minted monthly and retired after about
+ * a year. Deriving them from today's date means this list is always current -
+ * the script cannot rot the way a pinned constant does.
+ */
+function candidateVersions() {
+  if (process.env.LINKEDIN_VERSION) return [process.env.LINKEDIN_VERSION];
+  const out = [];
+  const now = new Date();
+  for (let i = 0; i < VERSION_LOOKBACK_MONTHS; i++) {
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - i, 1));
+    out.push(`${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}`);
+  }
+  return out;
+}
 
 /** Queue items are stored as simple HTML. LinkedIn commentary is plain text. */
 function htmlToText(html) {
@@ -59,9 +86,9 @@ async function main() {
     return;
   }
 
-  // 1. Resolve the author URN. Also doubles as a token health check, so this
-  //    runs before any queue logic - a smoke test should test the credential
-  //    even when the queue is empty.
+  // 1. Resolve the author URN. Doubles as a token health check, so it runs
+  //    before any queue logic - a smoke test should test the credential even
+  //    when the queue is empty.
   const meRes = await fetch('https://api.linkedin.com/v2/userinfo', {
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -97,8 +124,8 @@ async function main() {
     return;
   }
 
-  // 2. Publish.
-  const body = {
+  // 2. Publish, negotiating the API version.
+  const body = JSON.stringify({
     author,
     commentary,
     visibility: 'PUBLIC',
@@ -109,23 +136,46 @@ async function main() {
     },
     lifecycleState: 'PUBLISHED',
     isReshareDisabledByAuthor: false,
-  };
-
-  const res = await fetch('https://api.linkedin.com/rest/posts', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      'LinkedIn-Version': LINKEDIN_VERSION,
-      'X-Restli-Protocol-Version': '2.0.0',
-    },
-    body: JSON.stringify(body),
   });
 
-  const raw = await res.text();
+  const versions = candidateVersions();
+  let res = null;
+  let raw = '';
+  let usedVersion = null;
+  const retired = [];
 
-  // 3. Verify. This is the whole point: a post only counts if LinkedIn
-  //    hands back the URN of the thing it created.
+  for (const version of versions) {
+    res = await fetch(POSTS_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'LinkedIn-Version': version,
+        'X-Restli-Protocol-Version': '2.0.0',
+      },
+      body,
+    });
+    raw = await res.text();
+
+    // 426 NONEXISTENT_VERSION means only that this dated version is retired.
+    // Any other response is a real answer about the post itself - stop here.
+    if (res.status === 426 && raw.includes('NONEXISTENT_VERSION')) {
+      retired.push(version);
+      continue;
+    }
+    usedVersion = version;
+    break;
+  }
+
+  if (retired.length) log(`Retired API versions skipped: ${retired.join(', ')}`);
+
+  if (!usedVersion) {
+    fail(`every candidate LinkedIn API version was rejected as retired (tried ${versions.length}, oldest ${versions[versions.length - 1]}). Check LinkedIn's current version list and set LINKEDIN_VERSION.`);
+  }
+  log(`Using LinkedIn API version ${usedVersion}.`);
+
+  // 3. Verify. A post only counts if LinkedIn hands back the URN of the
+  //    thing it created.
   if (!res.ok) {
     fail(`LinkedIn returned ${res.status} for "${item.label}": ${raw}`);
   }
