@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-headcount-trap.html",
-      "slug": "the-headcount-trap",
-      "title": "The Headcount Trap",
-      "tag": "Leadership",
-      "description": "When something is not working, the reflex is to add people. More often than not, headcount buries the problem instead of solving it."
-    },
-    {
       "file": "the-second-sip-problem.html",
       "slug": "the-second-sip-problem",
       "title": "The Second Sip Problem",
@@ -28,6 +21,13 @@
       "title": "The Last Two Weeks",
       "tag": "Careers",
       "description": "How someone behaves during their notice period is one of the most honest signals in hiring, and almost nobody asks about it."
+    },
+    {
+      "file": "the-candidate-already-in-the-building.html",
+      "slug": "the-candidate-already-in-the-building",
+      "title": "The Candidate Already In The Building",
+      "tag": "Careers",
+      "description": "Companies run expensive external searches while overlooking people already doing the job down the hall, and the reasons are more psychological than practical."
     }
   ]
 }
