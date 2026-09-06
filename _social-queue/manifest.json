@@ -1,7 +1,5 @@
 {
-  "note": "One item posts per daily run (13:00 UTC) via scripts/post-next-social.js. The publisher takes queue[0], posts it through the Postiz API, then removes it. startDate holds the whole queue until posts already scheduled inside Postiz have run out. Refill queue[] to keep the daily cadence going.",
-  "startDate": "2026-09-09",
-  "integrationId": "cms3bzwdi02pao40yvq260ath",
+  "note": "One item posts per daily run (13:00 UTC) via scripts/post-next-linkedin.js, which posts directly to the LinkedIn REST API and only drops the item once LinkedIn returns the URN of the created post. Refill queue[] to keep the daily cadence going. Only queue posts whose article URL is already LIVE.",
   "platform": "linkedin",
   "queue": [
     {
@@ -51,6 +49,78 @@
     {
       "label": "introducing-provieo",
       "content": "<p>I started Provieo because of a pattern I kept seeing from the hiring side: capable people who couldn't prove it, screened out by a document that measures the wrong thing.</p><p>The premise is simple. Stop claiming skills. Show the work, and show the thinking behind it.</p><p>https://howarddavner.com/insights/introducing-provieo.html</p>"
+    },
+    {
+      "label": "the-headcount-trap",
+      "content": "<p>There is a particular relief that comes from deciding to hire. The team is stretched, something is slipping, and adding a person feels like decisive action.</p><p>I have felt that relief many times and I have learned to distrust it. A role you add under pressure gets defined by the pressure, so the job description becomes a list of everything currently on fire.</p><p>More often than I would like to admit, the headcount did not fix the problem. It gave the problem a person to hide behind.</p><p>https://howarddavner.com/insights/the-headcount-trap.html</p>"
+    },
+    {
+      "label": "winning-the-cooler-door",
+      "content": "<p>Founders love to talk about distribution. Getting the can into the store is a real milestone, and we have earned plenty of them.</p><p>But distribution and merchandising are two different games. A distribution win is a purchase order. A merchandising win is a can a real person actually pulls off the shelf.</p><p>You can be authorized in a thousand stores and still lose at the cooler door, in the three seconds a shopper is standing there.</p><p>https://howarddavner.com/insights/winning-the-cooler-door.html</p>"
+    },
+    {
+      "label": "the-reference-check-is-broken",
+      "content": "<p>By the time most of us pick up the phone for a reference check, we have already decided. The candidate handed us the names, and the names were chosen because they will say something kind.</p><p>If a step in your hiring process cannot change your mind, it is not a check. It is a formality.</p><p>What finally moved me was noticing how often a warm reference call preceded a hire that did not work, and how rarely the call had warned me.</p><p>https://howarddavner.com/insights/the-reference-check-is-broken.html</p>"
+    },
+    {
+      "label": "hiring-for-judgment",
+      "content": "<p>For a long time the bottleneck in most work was production. The people who could draft, model and build quickly were valuable because that competence was scarce.</p><p>That world is ending. When anyone with good tools can produce a competent draft in minutes, output stops separating candidates.</p><p>What is left is deciding what to build, when it is right, and when to throw it out and start over. Judgment is the thing I screen for now.</p><p>https://howarddavner.com/insights/hiring-for-judgment.html</p>"
+    },
+    {
+      "label": "cash-conversion-cycle",
+      "content": "<p>Founders love to talk about revenue. In a physical-product business I watch a quieter number first: the cash conversion cycle.</p><p>It measures how long a dollar is trapped between paying for cans, syrup, co-packing and freight, and the day a customer's payment actually lands.</p><p>Software collects before it spends. Beverage does the opposite. That one metric explains more about who survives than most of the income statement.</p><p>https://howarddavner.com/insights/cash-conversion-cycle.html</p>"
+    },
+    {
+      "label": "the-apprenticeship-gap",
+      "content": "<p>A recent hire told me her worry was not that AI would take her job someday. It was that it had already taken the job she was supposed to have first.</p><p>Cleaning up the deck, reconciling the numbers, drafting the memo nobody read closely - a model does that in seconds now.</p><p>But that work was never really about the output. It was how people learned the shape of a business. We have not been honest about what its disappearance costs.</p><p>https://howarddavner.com/insights/the-apprenticeship-gap.html</p>"
+    },
+    {
+      "label": "pricing-a-functional-drink",
+      "content": "<p>New founders treat price as the last decision, something you back into once the formula and the can are done. I think it is one of the first.</p><p>The number printed on the can is one of the loudest things a brand says about itself. Sit a dollar under the category leader and you have told the shopper exactly what you think you are worth.</p><p>Costs plus a margin gets the arithmetic right and the strategy backwards.</p><p>https://howarddavner.com/insights/pricing-a-functional-drink.html</p>"
+    },
+    {
+      "label": "proof-over-pedigree",
+      "content": "<p>For most of my career I hired the way almost everyone does: read the resume, scan the schools and company names, form a quick impression.</p><p>Over time I noticed how often that impression was wrong in both directions. Impressive resumes hid people who could not deliver, and some of my best hires looked unremarkable on paper.</p><p>A resume tells you where someone has been, not what they can do today. That gap is why I built Provieo.</p><p>https://howarddavner.com/insights/proof-over-pedigree.html</p>"
+    },
+    {
+      "label": "the-first-ninety-days",
+      "content": "<p>You can tell a great deal about a company by what happens to someone in their first ninety days. Not the welcome lunch - whether the work they were hired to do actually arrives.</p><p>I have broken that promise before without meaning to. You hire someone in a burst of conviction, the fire that made you hire them moves on, and they spend a month waiting.</p><p>Onboarding is where a company either keeps the promises it made to get someone in the door, or quietly hopes the new hire is too polite to mention it.</p><p>https://howarddavner.com/insights/the-first-ninety-days.html</p>"
+    },
+    {
+      "label": "why-functional-drinks-fail-year-two",
+      "content": "<p>Launching a functional beverage has never been easier. Formulate quickly, find a co-packer, design a premium can, buy enough attention to reach a few thousand hands.</p><p>Year one can look like success. Year two is when most of these brands quietly disappear, and it is rarely the product's fault.</p><p>A launch measures your ability to generate trial. The business is the second purchase, and the tenth. Trial can be bought. Loyalty has to be earned.</p><p>https://howarddavner.com/insights/why-functional-drinks-fail-year-two.html</p>"
+    },
+    {
+      "label": "portfolio-is-the-new-resume",
+      "content": "<p>The resume had a good run. For a century it was a cheap, loose proxy for what someone could do.</p><p>That correlation is breaking fast. A document anyone can now generate to look perfect carries no information - when every applicant passes, it decides nothing.</p><p>When claims are free, proof becomes the scarce thing. Show the work.</p><p>https://howarddavner.com/insights/portfolio-is-the-new-resume.html</p>"
+    },
+    {
+      "label": "the-discipline-of-no",
+      "content": "<p>Early on I assumed the hard part of building a business was finding opportunities. Twenty-five years later I believe the opposite.</p><p>Opportunities are everywhere. A new channel, a promising co-packer, a flavor extension a retailer swears will sell - each arrives wearing the costume of progress.</p><p>Resources are finite, so every yes is a quiet no somewhere else. Choosing what to walk away from is the discipline that actually compounds.</p><p>https://howarddavner.com/insights/the-discipline-of-no.html</p>"
+    },
+    {
+      "label": "hire-slow-first-ten",
+      "content": "<p>My most expensive mistakes in business were not bad deals or missed markets. They were hiring the wrong person too early.</p><p>When a company is small there is no layer of process to absorb a weak hire. Each person is a large fraction of the whole, writing the rulebook by example.</p><p>The pace they keep becomes the company's pace. The quality they accept becomes its floor. The first ten decide what the company becomes long before strategy does.</p><p>https://howarddavner.com/insights/hire-slow-first-ten.html</p>"
+    },
+    {
+      "label": "what-ai-changes-about-starting-a-career",
+      "content": "<p>A lot of people starting out are anxious that AI has erased the bottom rung of the ladder. I understand the worry, but I think it misreads the change.</p><p>AI does the mechanical first pass faster than any junior person can. What it cannot do is decide which analysis matters, or notice when an answer is confidently wrong.</p><p>The first rung has not been removed. It has moved, and it now sits higher than it used to.</p><p>https://howarddavner.com/insights/what-ai-changes-about-starting-a-career.html</p>"
+    },
+    {
+      "label": "trust-is-the-real-product",
+      "content": "<p>Walk the cooler aisle and the formulas blur together. The claims rhyme. Focus, energy, calm, all promising roughly the same thing.</p><p>Formulation is rarely the moat. Contract manufacturers are excellent, good ingredients are available to everyone, and a competitor can approximate your recipe within a season.</p><p>The real product is a promise someone is willing to believe a second time.</p><p>https://howarddavner.com/insights/trust-is-the-real-product.html</p>"
+    },
+    {
+      "label": "reinvention-mid-career",
+      "content": "<p>Changing careers in your forties or fifties is supposed to be reckless. I have done it more than once - finance to beverages, then to building an AI company.</p><p>The fear assumes you are starting from zero. You are not. Decades in one field leave you with judgment, pattern recognition, a network, and the ability to read a situation fast.</p><p>The best reinventions are not leaps. They are transfers.</p><p>https://howarddavner.com/insights/reinvention-mid-career.html</p>"
+    },
+    {
+      "label": "nootropics-substance-vs-hype",
+      "content": "<p>Nootropic has become one of the most overused words on a beverage label, and increasingly it is applied to products that have not earned it.</p><p>The category is not snake oil and it is not magic. Some ingredients have real evidence behind them at real doses, and plenty are there to look good on a panel.</p><p>Consumers deserve a clearer way to tell the difference than the front of the can.</p><p>https://howarddavner.com/insights/nootropics-substance-vs-hype.html</p>"
+    },
+    {
+      "label": "breaking-the-experience-paradox",
+      "content": "<p>You cannot get the job without experience, and you cannot get the experience without the job. The longer you look at that, the more absurd it gets.</p><p>When talented people cannot break in they tend to blame themselves - not enough hustle, wrong school, bad luck. The barrier is structural, not personal.</p><p>Employers de-risk hiring by asking for proof, and the only sanctioned proof has been a prior job. That is the specific problem I built Provieo to solve.</p><p>https://howarddavner.com/insights/breaking-the-experience-paradox.html</p>"
     }
   ]
 }
