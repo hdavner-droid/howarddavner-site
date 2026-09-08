@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-second-sip-problem.html",
-      "slug": "the-second-sip-problem",
-      "title": "The Second Sip Problem",
-      "tag": "Product",
-      "description": "A functional drink can win the first sip on novelty. The second sip is where the real business is won or lost — and most brands never think about it."
-    },
-    {
       "file": "the-reorder-is-everything.html",
       "slug": "the-reorder-is-everything",
       "title": "The Reorder Is Everything",
@@ -28,6 +21,13 @@
       "title": "The Candidate Already In The Building",
       "tag": "Careers",
       "description": "Companies run expensive external searches while overlooking people already doing the job down the hall, and the reasons are more psychological than practical."
+    },
+    {
+      "file": "the-promotion-nobody-asked-for.html",
+      "slug": "the-promotion-nobody-asked-for",
+      "title": "The Promotion Nobody Asked For",
+      "tag": "Careers",
+      "description": "Why moving your best performer into management often costs you two people instead of gaining one, and what to check before you do it."
     }
   ]
 }
