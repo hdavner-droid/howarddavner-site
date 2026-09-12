@@ -3,10 +3,6 @@
   "platform": "linkedin",
   "queue": [
     {
-      "label": "engineering-the-energy-curve",
-      "content": "<p>Most energy products are engineered for the first twenty minutes. That's why the crash is the category's defining experience.</p><p>The interesting problem isn't peak intensity - it's the shape of the curve. Onset, plateau, and how gracefully it comes down.</p><p>Formulate for how someone feels at hour three, not at minute five.</p><p>https://howarddavner.com/insights/engineering-the-energy-curve.html</p>"
-    },
-    {
       "label": "finance-discipline-startups",
       "content": "<p>Financial discipline in a young company isn't about spending less. It's about knowing, at any moment, which number would actually kill you.</p><p>Most founders can recite revenue. Fewer can tell you their true landed cost, and fewer still can tell you when the cash runs out under a realistic case.</p><p>Know the one that kills you.</p><p>https://howarddavner.com/insights/finance-discipline-startups.html</p>"
     },
