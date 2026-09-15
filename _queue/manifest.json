@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-reorder-is-everything.html",
-      "slug": "the-reorder-is-everything",
-      "title": "The Reorder Is Everything",
-      "tag": "Retail",
-      "description": "Getting onto the shelf feels like the win. In beverage, the shelf is rented, and the only rent that counts is velocity. The reorder is the whole game."
-    },
-    {
       "file": "the-last-two-weeks.html",
       "slug": "the-last-two-weeks",
       "title": "The Last Two Weeks",
@@ -28,6 +21,13 @@
       "title": "The Promotion Nobody Asked For",
       "tag": "Careers",
       "description": "Why moving your best performer into management often costs you two people instead of gaining one, and what to check before you do it."
+    },
+    {
+      "file": "the-boomerang-hire.html",
+      "slug": "the-boomerang-hire",
+      "title": "The Boomerang Hire",
+      "tag": "Careers",
+      "description": "On rehiring people who already left once, and the honest work of figuring out whether the reason they left is still true."
     }
   ]
 }
