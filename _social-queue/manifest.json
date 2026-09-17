@@ -3,10 +3,6 @@
   "platform": "linkedin",
   "queue": [
     {
-      "label": "introducing-provieo",
-      "content": "<p>I started Provieo because of a pattern I kept seeing from the hiring side: capable people who couldn't prove it, screened out by a document that measures the wrong thing.</p><p>The premise is simple. Stop claiming skills. Show the work, and show the thinking behind it.</p><p>https://howarddavner.com/insights/introducing-provieo.html</p>"
-    },
-    {
       "label": "the-headcount-trap",
       "content": "<p>There is a particular relief that comes from deciding to hire. The team is stretched, something is slipping, and adding a person feels like decisive action.</p><p>I have felt that relief many times and I have learned to distrust it. A role you add under pressure gets defined by the pressure, so the job description becomes a list of everything currently on fire.</p><p>More often than I would like to admit, the headcount did not fix the problem. It gave the problem a person to hide behind.</p><p>https://howarddavner.com/insights/the-headcount-trap.html</p>"
     },
