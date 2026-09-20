@@ -3,10 +3,6 @@
   "platform": "linkedin",
   "queue": [
     {
-      "label": "the-reference-check-is-broken",
-      "content": "<p>By the time most of us pick up the phone for a reference check, we have already decided. The candidate handed us the names, and the names were chosen because they will say something kind.</p><p>If a step in your hiring process cannot change your mind, it is not a check. It is a formality.</p><p>What finally moved me was noticing how often a warm reference call preceded a hire that did not work, and how rarely the call had warned me.</p><p>https://howarddavner.com/insights/the-reference-check-is-broken.html</p>"
-    },
-    {
       "label": "hiring-for-judgment",
       "content": "<p>For a long time the bottleneck in most work was production. The people who could draft, model and build quickly were valuable because that competence was scarce.</p><p>That world is ending. When anyone with good tools can produce a competent draft in minutes, output stops separating candidates.</p><p>What is left is deciding what to build, when it is right, and when to throw it out and start over. Judgment is the thing I screen for now.</p><p>https://howarddavner.com/insights/hiring-for-judgment.html</p>"
     },
