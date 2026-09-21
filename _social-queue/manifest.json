@@ -3,10 +3,6 @@
   "platform": "linkedin",
   "queue": [
     {
-      "label": "hiring-for-judgment",
-      "content": "<p>For a long time the bottleneck in most work was production. The people who could draft, model and build quickly were valuable because that competence was scarce.</p><p>That world is ending. When anyone with good tools can produce a competent draft in minutes, output stops separating candidates.</p><p>What is left is deciding what to build, when it is right, and when to throw it out and start over. Judgment is the thing I screen for now.</p><p>https://howarddavner.com/insights/hiring-for-judgment.html</p>"
-    },
-    {
       "label": "cash-conversion-cycle",
       "content": "<p>Founders love to talk about revenue. In a physical-product business I watch a quieter number first: the cash conversion cycle.</p><p>It measures how long a dollar is trapped between paying for cans, syrup, co-packing and freight, and the day a customer's payment actually lands.</p><p>Software collects before it spends. Beverage does the opposite. That one metric explains more about who survives than most of the income statement.</p><p>https://howarddavner.com/insights/cash-conversion-cycle.html</p>"
     },
