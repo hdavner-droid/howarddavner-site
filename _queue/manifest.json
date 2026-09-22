@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-last-two-weeks.html",
-      "slug": "the-last-two-weeks",
-      "title": "The Last Two Weeks",
-      "tag": "Careers",
-      "description": "How someone behaves during their notice period is one of the most honest signals in hiring, and almost nobody asks about it."
-    },
-    {
       "file": "the-candidate-already-in-the-building.html",
       "slug": "the-candidate-already-in-the-building",
       "title": "The Candidate Already In The Building",
@@ -28,6 +21,13 @@
       "title": "The Boomerang Hire",
       "tag": "Careers",
       "description": "On rehiring people who already left once, and the honest work of figuring out whether the reason they left is still true."
+    },
+    {
+      "file": "the-counteroffer-trap.html",
+      "slug": "the-counteroffer-trap",
+      "title": "The Counteroffer Trap",
+      "tag": "Careers",
+      "description": "Why matching an offer after someone resigns almost never fixes the real problem, and what I learned the hard way at Beverage USA Holdings."
     }
   ]
 }
