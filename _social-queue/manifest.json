@@ -1,5 +1,5 @@
 {
-  "note": "One item posts per daily run (13:00 UTC) via scripts/post-next-linkedin.js, which posts directly to the LinkedIn REST API and only drops the item once LinkedIn returns the URN of the created post. Refill queue[] to keep the daily cadence going. Only queue posts whose article URL is already LIVE.",
+  "note": "One item posts per scheduled run (Tue & Fri 13:00 UTC) via scripts/post-next-linkedin.js, which posts directly to the LinkedIn REST API and only drops the item once LinkedIn returns the URN of the created post. Refill queue[] to keep the cadence going. Only queue posts whose article URL is already LIVE.",
   "platform": "linkedin",
   "queue": [
     {
@@ -49,6 +49,26 @@
     {
       "label": "breaking-the-experience-paradox",
       "content": "<p>You cannot get the job without experience, and you cannot get the experience without the job. The longer you look at that, the more absurd it gets.</p><p>When talented people cannot break in they tend to blame themselves - not enough hustle, wrong school, bad luck. The barrier is structural, not personal.</p><p>Employers de-risk hiring by asking for proof, and the only sanctioned proof has been a prior job. That is the specific problem I built Provieo to solve.</p><p>https://howarddavner.com/insights/breaking-the-experience-paradox.html</p>"
+    },
+    {
+      "label": "the-second-sip-problem",
+      "content": "<p>Almost everyone optimizes for the first sip - the sample table, the bold flavor that has to win a three-second impression.</p><p>But nobody builds a daily habit around something they have to tolerate. The flavor that stood out at the table is often the reason the third can is still sitting in the fridge.</p><p>Trial measures your marketing. The second purchase measures your product. I have started judging a launch by whether people are quietly still drinking it a month later.</p><p>https://howarddavner.com/insights/the-second-sip-problem.html</p>"
+    },
+    {
+      "label": "the-reorder-is-everything",
+      "content": "<p>Getting on the shelf feels like the win. It is closer to the invoice arriving.</p><p>The shelf is rented, and velocity is the rent. A hundred doors with nothing moving through them teaches a buyer something about you that is hard to unteach. Twenty doors selling through tells the opposite story.</p><p>The work most founders think ends at the buyer meeting actually starts there. The reorder is the only yes nobody had to be talked into.</p><p>https://howarddavner.com/insights/the-reorder-is-everything.html</p>"
+    },
+    {
+      "label": "protect-the-downside",
+      "content": "<p>Twenty-five years in capital markets taught me one thing I still use every day, and it is not how to spot an opportunity.</p><p>It is how to size a bet so that being wrong does not end the game. Staying in is worth more than any single trade you get right.</p><p>The odd part is that protecting the downside is what lets you be aggressive. Ten small survivable bets with lopsided payoffs beat one heroic wager that has to land.</p><p>https://howarddavner.com/insights/protect-the-downside.html</p>"
+    },
+    {
+      "label": "the-last-two-weeks",
+      "content": "<p>I have learned more about people from their notice period than from any interview I have ever run.</p><p>Two colleagues left the same company the same month. One documented every account so the next person could pick it up cold. The other stopped answering email. Nothing in either interview predicted which would be which.</p><p>Anyone is diligent when diligence is being graded. The last two weeks are ungraded, which is exactly why they are worth asking a reference about.</p><p>https://howarddavner.com/insights/the-last-two-weeks.html</p>"
+    },
+    {
+      "label": "culture-of-ownership",
+      "content": "<p>The best teams I have been part of were not the busiest. They were the ones where a small number of people were genuinely on the hook for an outcome.</p><p>Lean forces clarity. With no slack to hide in, people stop reporting activity and start owning results - but only if you actually hand over the decision, including the room to get it wrong.</p><p>Culture is what you tolerate, not what you put on a wall. Worth getting right before you scale anything else.</p><p>https://howarddavner.com/insights/culture-of-ownership.html</p>"
     }
   ]
 }
