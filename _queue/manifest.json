@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-candidate-already-in-the-building.html",
-      "slug": "the-candidate-already-in-the-building",
-      "title": "The Candidate Already In The Building",
-      "tag": "Careers",
-      "description": "Companies run expensive external searches while overlooking people already doing the job down the hall, and the reasons are more psychological than practical."
-    },
-    {
       "file": "the-promotion-nobody-asked-for.html",
       "slug": "the-promotion-nobody-asked-for",
       "title": "The Promotion Nobody Asked For",
@@ -28,6 +21,13 @@
       "title": "The Counteroffer Trap",
       "tag": "Careers",
       "description": "Why matching an offer after someone resigns almost never fixes the real problem, and what I learned the hard way at Beverage USA Holdings."
+    },
+    {
+      "file": "what-a-free-sample-really-costs.html",
+      "slug": "what-a-free-sample-really-costs",
+      "title": "What a Free Sample Really Costs",
+      "tag": "Retail",
+      "description": "We treat sampling as a marketing expense. It works better as a research instrument, and it can do real damage when it is aimed at the wrong person."
     }
   ]
 }
