@@ -116,13 +116,13 @@ async function pickModel() {
 function buildPrompt(taken) {
   return `You write essays published under Howard Davner's byline on howarddavner.com.
 
-About Howard: CEO of Beverage USA Holdings, co-founder of NERD Focus (a nootropic functional energy drink), and founder of Provieo, an AI platform that helps people get hired on the strength of demonstrated work. Formerly in finance.
+About Howard: co-founder of Beverage USA Holdings and founder of Provieo, an AI platform that helps people get hired on the strength of demonstrated work. Formerly in finance.
 
 Write ONE new essay.
 
 TOPIC RULES
 - Roughly 60% of essays are about careers, hiring, talent, management, or how AI is changing work. Those carry the byline role "Founder, Provieo".
-- Roughly 40% are about functional beverage, retail, product, pricing, or entrepreneurship. Those carry the byline role "CEO, Beverage USA Holdings".
+- Roughly 40% are about functional beverage, retail, product, pricing, or entrepreneurship. Those carry the byline role "Co-Founder, Beverage USA Holdings".
 - Pick a genuinely fresh angle. These slugs are already used, so do NOT repeat their topics: ${taken.join(', ')}
 
 VOICE
@@ -142,7 +142,7 @@ Return ONLY a JSON object, no prose and no code fences, with exactly these keys:
   "title": "Title Case, 3-7 words, no colon",
   "slug": "kebab-case-from-the-title",
   "tag": "one of: ${TAGS.join(' | ')}",
-  "role": "Founder, Provieo" or "CEO, Beverage USA Holdings",
+  "role": "Founder, Provieo" or "Co-Founder, Beverage USA Holdings",
   "description": "one or two sentences, under 200 characters, no quotes inside",
   "body_html": "the full essay as <p> and <h2> tags concatenated"
 }`;
@@ -178,7 +178,7 @@ async function writeOne(model, taken) {
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(art.slug)) throw new Error('Bad slug: ' + art.slug);
   if (taken.includes(art.slug)) throw new Error('Duplicate slug: ' + art.slug);
   if (!TAGS.includes(art.tag)) art.tag = 'Careers';
-  if (!/^(Founder, Provieo|CEO, Beverage USA Holdings)$/.test(art.role)) art.role = 'Founder, Provieo';
+  if (!/^(Founder, Provieo|Co-Founder, Beverage USA Holdings)$/.test(art.role)) art.role = 'Founder, Provieo';
   if (/<(?!\/?(p|h2)\b)[a-z]/i.test(art.body_html)) throw new Error('Body contains disallowed tags');
 
   const file = art.slug + '.html';
