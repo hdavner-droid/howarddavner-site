@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-promotion-nobody-asked-for.html",
-      "slug": "the-promotion-nobody-asked-for",
-      "title": "The Promotion Nobody Asked For",
-      "tag": "Careers",
-      "description": "Why moving your best performer into management often costs you two people instead of gaining one, and what to check before you do it."
-    },
-    {
       "file": "the-boomerang-hire.html",
       "slug": "the-boomerang-hire",
       "title": "The Boomerang Hire",
@@ -28,6 +21,13 @@
       "title": "What a Free Sample Really Costs",
       "tag": "Retail",
       "description": "We treat sampling as a marketing expense. It works better as a research instrument, and it can do real damage when it is aimed at the wrong person."
+    },
+    {
+      "file": "the-interview-nobody-prepares-for.html",
+      "slug": "the-interview-nobody-prepares-for",
+      "title": "The Interview Nobody Prepares For",
+      "tag": "Careers",
+      "description": "Most candidates rehearse answers to questions they expect. The moment that decides a hire is usually the one nobody saw coming, and it says more than the rehearsed parts."
     }
   ]
 }
