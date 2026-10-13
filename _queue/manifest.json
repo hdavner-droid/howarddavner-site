@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-boomerang-hire.html",
-      "slug": "the-boomerang-hire",
-      "title": "The Boomerang Hire",
-      "tag": "Careers",
-      "description": "On rehiring people who already left once, and the honest work of figuring out whether the reason they left is still true."
-    },
-    {
       "file": "the-counteroffer-trap.html",
       "slug": "the-counteroffer-trap",
       "title": "The Counteroffer Trap",
@@ -28,6 +21,13 @@
       "title": "The Interview Nobody Prepares For",
       "tag": "Careers",
       "description": "Most candidates rehearse answers to questions they expect. The moment that decides a hire is usually the one nobody saw coming, and it says more than the rehearsed parts."
+    },
+    {
+      "file": "managing-people-who-out-use-you.html",
+      "slug": "managing-people-who-out-use-you",
+      "title": "Managing People Who Out-Use You",
+      "tag": "Leadership",
+      "description": "When a junior teammate is better with AI tools than their manager, the old logic of management gets awkward. Here is what I have learned about staying useful without pretending to keep up."
     }
   ]
 }
