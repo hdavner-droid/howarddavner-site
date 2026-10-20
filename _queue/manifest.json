@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-counteroffer-trap.html",
-      "slug": "the-counteroffer-trap",
-      "title": "The Counteroffer Trap",
-      "tag": "Careers",
-      "description": "Why matching an offer after someone resigns almost never fixes the real problem, and what I learned the hard way at Beverage USA Holdings."
-    },
-    {
       "file": "what-a-free-sample-really-costs.html",
       "slug": "what-a-free-sample-really-costs",
       "title": "What a Free Sample Really Costs",
@@ -28,6 +21,13 @@
       "title": "Managing People Who Out-Use You",
       "tag": "Leadership",
       "description": "When a junior teammate is better with AI tools than their manager, the old logic of management gets awkward. Here is what I have learned about staying useful without pretending to keep up."
+    },
+    {
+      "file": "the-paid-work-trial.html",
+      "slug": "the-paid-work-trial",
+      "title": "The Paid Work Trial",
+      "tag": "Careers",
+      "description": "Unpaid take-home assignments quietly tax the people we say we want to hire. A short, paid work trial is a fairer test and a better one."
     }
   ]
 }
