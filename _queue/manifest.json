@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "what-a-free-sample-really-costs.html",
-      "slug": "what-a-free-sample-really-costs",
-      "title": "What a Free Sample Really Costs",
-      "tag": "Retail",
-      "description": "We treat sampling as a marketing expense. It works better as a research instrument, and it can do real damage when it is aimed at the wrong person."
-    },
-    {
       "file": "the-interview-nobody-prepares-for.html",
       "slug": "the-interview-nobody-prepares-for",
       "title": "The Interview Nobody Prepares For",
@@ -28,6 +21,13 @@
       "title": "The Paid Work Trial",
       "tag": "Careers",
       "description": "Unpaid take-home assignments quietly tax the people we say we want to hire. A short, paid work trial is a fairer test and a better one."
+    },
+    {
+      "file": "writing-a-job-description-honestly.html",
+      "slug": "writing-a-job-description-honestly",
+      "title": "Writing a Job Description Honestly",
+      "tag": "Careers",
+      "description": "Most job descriptions describe an imaginary person instead of a real problem. Here is what changed when I started writing postings that said what the work actually was."
     }
   ]
 }
