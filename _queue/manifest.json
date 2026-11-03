@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "the-interview-nobody-prepares-for.html",
-      "slug": "the-interview-nobody-prepares-for",
-      "title": "The Interview Nobody Prepares For",
-      "tag": "Careers",
-      "description": "Most candidates rehearse answers to questions they expect. The moment that decides a hire is usually the one nobody saw coming, and it says more than the rehearsed parts."
-    },
-    {
       "file": "managing-people-who-out-use-you.html",
       "slug": "managing-people-who-out-use-you",
       "title": "Managing People Who Out-Use You",
@@ -28,6 +21,13 @@
       "title": "Writing a Job Description Honestly",
       "tag": "Careers",
       "description": "Most job descriptions describe an imaginary person instead of a real problem. Here is what changed when I started writing postings that said what the work actually was."
+    },
+    {
+      "file": "the-shelf-talker-nobody-reads.html",
+      "slug": "the-shelf-talker-nobody-reads",
+      "title": "The Shelf Talker Nobody Reads",
+      "tag": "Retail",
+      "description": "Most of what a brand writes for the store goes unread. A look at what actually communicates a product to a shopper who gives it about two seconds."
     }
   ]
 }
