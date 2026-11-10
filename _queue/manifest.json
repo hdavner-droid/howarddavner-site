@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "managing-people-who-out-use-you.html",
-      "slug": "managing-people-who-out-use-you",
-      "title": "Managing People Who Out-Use You",
-      "tag": "Leadership",
-      "description": "When a junior teammate is better with AI tools than their manager, the old logic of management gets awkward. Here is what I have learned about staying useful without pretending to keep up."
-    },
-    {
       "file": "the-paid-work-trial.html",
       "slug": "the-paid-work-trial",
       "title": "The Paid Work Trial",
@@ -28,6 +21,13 @@
       "title": "The Shelf Talker Nobody Reads",
       "tag": "Retail",
       "description": "Most of what a brand writes for the store goes unread. A look at what actually communicates a product to a shopper who gives it about two seconds."
+    },
+    {
+      "file": "the-rejection-email-deserves-care.html",
+      "slug": "the-rejection-email-deserves-care",
+      "title": "The Rejection Email Deserves Care",
+      "tag": "Careers",
+      "description": "Most companies treat the rejection message as cleanup. It is the last thing a candidate hears from you, and it says more about your hiring than the job posting does."
     }
   ]
 }
