@@ -2,13 +2,6 @@
   "note": "Articles publish in order, one per weekly run (Tue 16:00 UTC). The publisher takes queue[0], wires it in, then removes it. Refill this list to keep weeks of hands-off publishing ready. Each article HTML lives in _queue/ and uses {{DATE}} and {{MONTH_YEAR}} placeholders filled with the real publish date.",
   "queue": [
     {
-      "file": "writing-a-job-description-honestly.html",
-      "slug": "writing-a-job-description-honestly",
-      "title": "Writing a Job Description Honestly",
-      "tag": "Careers",
-      "description": "Most job descriptions describe an imaginary person instead of a real problem. Here is what changed when I started writing postings that said what the work actually was."
-    },
-    {
       "file": "the-shelf-talker-nobody-reads.html",
       "slug": "the-shelf-talker-nobody-reads",
       "title": "The Shelf Talker Nobody Reads",
@@ -28,6 +21,13 @@
       "title": "The Quiet Cost of Slow Decisions",
       "tag": "Leadership",
       "description": "Indecision rarely looks like failure while it is happening. It looks like diligence, and its costs show up later in people who stop bringing you their best ideas."
+    },
+    {
+      "file": "the-meeting-that-should-have-been-nothing.html",
+      "slug": "the-meeting-that-should-have-been-nothing",
+      "title": "The Meeting That Should Have Been Nothing",
+      "tag": "Leadership",
+      "description": "Most recurring meetings survive because nobody remembers deciding to keep them. A look at how I audit my own calendar and what I have learned from cancelling things."
     }
   ]
 }
